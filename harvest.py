@@ -58,7 +58,6 @@ def make_melon_types():
     return all_melon_types
 
 
-
 def print_pairing_info(melon_types):
     """Prints information about each melon type's pairings."""
     
@@ -91,14 +90,66 @@ def make_melon_type_lookup(melon_types):
 class Melon:
     """A melon in a melon harvest."""
 
-    # Fill in the rest
-    # Needs __init__ and is_sellable methods
+    def __init__(self, name, code, shape, color, field, harvester): #make_melons_by_id
+        self.name = name
+        self.code = code
+        self.shape = shape
+        self.color = color
+        self.field = field
+        self.harvester = harvester 
+        # self.melons_by_id = melons_by_id 
 
+
+    def is_sellable(self):
+        '''return True or False based on whether melon is able to be sold'''
+
+        if self.shape > 5 and self.color > 5 and self.field != 3:
+            return True
+        else:
+            return False 
 
 def make_melons(melon_types):
     """Returns a list of Melon objects."""
 
-    # Fill in the rest
+    all_melons = []
+
+    melon_1 = Melon(melons_by_id['yw'], 8, 7, 2, 'Sheila') #name, code
+    melon_2 = Melon(melons_by_id['yw'], 3, 4, 2, 'Sheila') #name, code
+    melon_3 = Melon(melons_by_id['yw'], 9, 8, 3, 'Sheila') #name, code
+    melon_4 = Melon(melons_by_id['cas'], 10, 6, 35, 'Sheila') #name, code
+    melon_5 = Melon(melons_by_id['cren'], 8, 9, 35, 'Michael') #name, code
+    melon_6 = Melon(melons_by_id['cren'], 8, 2, 35, 'Michael') #name, code
+    melon_7 = Melon(melons_by_id['cren'], 2, 3, 4, 'Michael') #name, code
+    melon_8 = Melon(melons_by_id['musk'], 6, 7, 4, 'Michael') #name, code
+    melon_9 = Melon(melons_by_id['yw'], 7, 10, 3, 'Sheila') #name, code
+
+    all_melons.append(melon_1)
+    all_melons.append(melon_2)
+    all_melons.append(melon_3)
+    all_melons.append(melon_4)
+    all_melons.append(melon_5)
+    all_melons.append(melon_6)
+    all_melons.append(melon_7)
+    all_melons.append(melon_8)
+    all_melons.append(melon_9)
+
+    # for melon in all_melons:
+    #     print(f'Melon {melon.name}')
+    #     print(f'Melon type: {melon.code}')
+    #     print(f'Shape rating: {melon.shape}')
+    #     print(f'Color rating {melon.color}')
+    #     print(f'Harvested from field {melon.field}')
+    #     print(f'Harvested by {melon.harvester}')
+
+    return all_melons 
+
+
+# print(make_melon_type_lookup(make_melons))
+melons_by_id = make_melon_type_lookup(make_melons(make_melon_types()))
+# melons_by_id = melons_by_id.keys()
+print(melons_by_id)
+# print(make_melons(make_melon_types()))
+
 
 
 def get_sellability_report(melons):
